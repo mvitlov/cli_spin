@@ -13,6 +13,8 @@ and the Flutter guide for
 
 > A Dart package that enhances the user experience by displaying a sleek terminal spinner for both sync and async operations.
 
+![preview](https://github.com/mvitlov/cli_spinner/blob/main/media/preview.gif)
+
 ## Features
 
 - **80+** predefined spinners accessible via `CliSpinners`
