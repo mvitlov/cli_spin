@@ -1,19 +1,6 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
 > A Dart package that enhances the user experience by displaying a sleek terminal spinner for both sync and async operations.
 
-![preview](https://github.com/mvitlov/cli_spinner/blob/main/media/preview.gif)
+![preview](https://github.com/mvitlov/cli_spin/blob/main/media/preview.gif)
 
 ## Features
 
@@ -34,11 +21,11 @@ start using the package.
 
 ```dart
 import 'dart:async';
-import 'package:cli_spinner/cli_spinner.dart';
+import 'package:cli_spin/cli_spin.dart';
 
 void main() {
   // Instantiate spinner
-  final spinner = CliSpinner(
+  final spinner = CliSpin(
     text: 'Loading data...',
     spinner: CliSpinners.line,
   ).start(); // Chaining methods

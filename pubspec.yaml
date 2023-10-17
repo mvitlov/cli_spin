@@ -1,9 +1,9 @@
-name: cli_spinner
+name: cli_spin
 description: A Dart package that enhances the user experience by displaying a sleek terminal spinner for both sync and async operations.
 homepage: https://marinvitlov.com
 version: 1.0.0
-repository: https://github.com/mvitlov/cli_spinner
-issue_tracker: https://github.com/mvitlov/cli_spinner/issues?q=is%3Aissue+is%3Aopen+
+repository: https://github.com/mvitlov/cli_spin
+issue_tracker: https://github.com/mvitlov/cli_spin/issues?q=is%3Aissue+is%3Aopen+
 
 environment:
   sdk: ^3.0.6

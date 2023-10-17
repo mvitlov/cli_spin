@@ -1,4 +1,4 @@
-import '../cli_spinner_color.dart';
+import '../cli_spin_color.dart';
 import 'is_unicode_supported.dart';
 
 /// Colored symbols for various log level

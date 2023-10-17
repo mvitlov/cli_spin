@@ -1,18 +1,18 @@
 import 'dart:async';
 
-import 'package:cli_spinner/cli_spinner.dart';
+import 'package:cli_spin/cli_spin.dart';
 
 // Helper function
 Timer _setTimeout(void Function() fn, int interval) =>
     Timer(Duration(milliseconds: interval), fn);
 
 void main(List<String> args) async {
-  final spinner2 = CliSpinner(
+  final spinner2 = CliSpin(
       text: 'Loading a little bit more data...',
       spinner: CliSpinners.dots,
       color: CliSpinnerColor.white);
 
-  final spinner1 = CliSpinner(
+  final spinner1 = CliSpin(
       text: 'Loading data...',
       spinner: CliSpinners.dots2,
       color: CliSpinnerColor.white);

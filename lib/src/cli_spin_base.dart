@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:ansi_strip/ansi_strip.dart';
 import 'package:string_width/string_width.dart';
 
-import 'cli_spinner_color.dart';
+import 'cli_spin_color.dart';
 import 'spinner_data.dart';
 import 'spinners/spinners.dart';
 import 'utils/cursor.dart';
@@ -16,7 +16,7 @@ import 'utils/log_symbols.dart';
 ///
 /// Usage example:
 /// ```dart
-/// final spinner = CliSpinner(spinner: CliSpinners.dots2);
+/// final spinner = CliSpin(spinner: CliSpinners.dots2);
 /// spinner.start("Loading..."); // Start the spinner
 /// Timer(Duration(seconds: 2), () {
 ///   spinner.text = "Taking more than usual..."; // Update the text
@@ -25,7 +25,7 @@ import 'utils/log_symbols.dart';
 ///   });
 /// });
 /// ```
-class CliSpinner {
+class CliSpin {
   SpinnerData? _spinner;
   Timer? _timer;
   int? _initialInterval;
@@ -50,7 +50,7 @@ class CliSpinner {
 
   bool isSilent;
 
-  CliSpinner({
+  CliSpin({
     String? text,
     Stdout? stream,
     SpinnerData? spinner,
@@ -78,9 +78,9 @@ class CliSpinner {
   }
 
   static Future<T> async<T>(
-    Future<T> Function(CliSpinner spinner) action, {
-    void Function(T result, CliSpinner spinner)? onSuccess,
-    void Function(Object error, CliSpinner spinner)? onError,
+    Future<T> Function(CliSpin spinner) action, {
+    void Function(T result, CliSpin spinner)? onSuccess,
+    void Function(Object error, CliSpin spinner)? onError,
     String? text,
     Stdout? stream,
     SpinnerData? spinnerData,
@@ -93,7 +93,7 @@ class CliSpinner {
     bool isSilent = false,
     int? interval,
   }) async {
-    final spinner = CliSpinner(
+    final spinner = CliSpin(
       text: text,
       stream: stream,
       spinner: spinnerData,
@@ -202,7 +202,7 @@ class CliSpinner {
     return fullPrefixText + frame + fullText + fullSuffixText;
   }
 
-  CliSpinner clear() {
+  CliSpin clear() {
     if (!_isEnabled || !_stream.hasTerminal) return this;
 
     cursorTo(_stream, 0);
@@ -225,7 +225,7 @@ class CliSpinner {
     return this;
   }
 
-  CliSpinner render() {
+  CliSpin render() {
     if (isSilent) return this;
 
     clear();
@@ -235,7 +235,7 @@ class CliSpinner {
     return this;
   }
 
-  CliSpinner start([String? text]) {
+  CliSpin start([String? text]) {
     if (text != null && text.isNotEmpty) {
       this.text = text;
     }
@@ -264,7 +264,7 @@ class CliSpinner {
     return this;
   }
 
-  CliSpinner stop() {
+  CliSpin stop() {
     if (!_isEnabled) return this;
 
     _timer?.cancel();
@@ -279,23 +279,23 @@ class CliSpinner {
     return this;
   }
 
-  CliSpinner success([String? text]) {
+  CliSpin success([String? text]) {
     return stopAndPersist(symbol: logSymbols.success, text: text);
   }
 
-  CliSpinner fail([String? text]) {
+  CliSpin fail([String? text]) {
     return stopAndPersist(symbol: logSymbols.error, text: text);
   }
 
-  CliSpinner warn([String? text]) {
+  CliSpin warn([String? text]) {
     return stopAndPersist(symbol: logSymbols.warning, text: text);
   }
 
-  CliSpinner info([String? text]) {
+  CliSpin info([String? text]) {
     return stopAndPersist(symbol: logSymbols.info, text: text);
   }
 
-  CliSpinner stopAndPersist(
+  CliSpin stopAndPersist(
       {String? symbol, String? text, String? prefixText, String? suffixText}) {
     if (isSilent) return this;
 

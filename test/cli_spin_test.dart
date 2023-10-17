@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:ansi_strip/ansi_strip.dart';
-import 'package:cli_spinner/cli_spinner.dart';
+import 'package:cli_spin/cli_spin.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -14,7 +14,7 @@ Future<String> doSpinner(Function fn,
   final stream = MockStdout();
   final output = stream.stream;
 
-  final spinner = CliSpinner(
+  final spinner = CliSpin(
     stream: stream,
     text: 'foo',
     color: CliSpinnerColor.white,
@@ -34,7 +34,7 @@ Future<String> doSpinner(Function fn,
   return events.join('');
 }
 
-Future<void> macro(void Function(CliSpinner spinner) fn, expected,
+Future<void> macro(void Function(CliSpin spinner) fn, expected,
     {bool? isEnabled,
     bool? isSilent,
     String? prefixText,
@@ -70,11 +70,11 @@ void noop() {}
 
 void main() {
   test('`.id` is not set when created', () {
-    final spinner = CliSpinner(text: 'foo');
+    final spinner = CliSpin(text: 'foo');
     expect(spinner.isSpinning, isFalse);
   });
   test('ignore consecutive calls to `.start()`', () {
-    final spinner = CliSpinner(text: 'foo', stream: MockStdout());
+    final spinner = CliSpin(text: 'foo', stream: MockStdout());
     spinner.start();
     final id = spinner.id;
     spinner.start();
@@ -82,7 +82,7 @@ void main() {
   });
 
   test('chain call to `.start()` with constructor', () {
-    final spinner = CliSpinner(
+    final spinner = CliSpin(
       stream: MockStdout(),
       text: 'foo',
       isEnabled: true,
@@ -200,7 +200,7 @@ void main() {
     final stream = MockStdout();
     final output = stream.stream;
 
-    final spinner = CliSpinner(
+    final spinner = CliSpin(
         stream: stream,
         isEnabled: true,
         spinner: const SpinnerData(frames: ['foo', 'fooo']));
@@ -222,7 +222,7 @@ void main() {
   });
 
   test('set the correct interval when changing spinner', () {
-    final spinner = CliSpinner(
+    final spinner = CliSpin(
       isEnabled: false,
       spinner: SpinnerData(frames: ['foo', 'bar']),
       interval: 300,

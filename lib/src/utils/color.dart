@@ -1,4 +1,4 @@
-part of '../cli_spinner_color.dart';
+part of '../cli_spin_color.dart';
 
 class _Code {
   String open;
