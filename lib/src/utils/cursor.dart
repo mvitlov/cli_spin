@@ -75,7 +75,6 @@ class _CSI {
   static String get kClearToLineBeginning => apply(['1K']);
   static String get kClearToLineEnd => apply(['0K']);
   static String get kClearLine => apply(['2K']);
-  static String get kClearScreenDown => apply(['0J']);
 
   static String apply(List<String> strings, [List<int> args = const []]) {
     var ret = '$kEscape[';
