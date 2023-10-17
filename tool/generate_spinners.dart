@@ -40,4 +40,5 @@ void main(List<String> args) {
   );
 
   Process.runSync('dart', ['format', 'lib/src/spinners']);
+  Process.runSync('dart', ['fix', '--apply']);
 }
